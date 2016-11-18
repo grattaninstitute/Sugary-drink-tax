@@ -1,0 +1,38 @@
+\brokenpenalty10000\relax
+\hyphenpenalty250
+
+% for tables
+\usepackage{eurosym}
+\usepackage{longtable}
+\usepackage{ltxtable}
+\usepackage{multirow}
+% Include comments (use option [disable] to turn comments off: i.e. 
+%\usepackage[disable]{todonotes}
+\usepackage{todonotes}
+\setlength{\marginparwidth}{1.8cm}
+
+% Define commands (e.g. headline figure)
+\def\headline{\$10~billion}
+
+% Bibliography
+\addbibresource{ObesityBibliography.bib}
+%\addbibresource{bib.bib}
+
+% Words/acronyms that should not be hyphenated:
+\hyphenation{Grattan Institute Figure}
+
+% text highlighting
+\usepackage{soul}
+
+% Person-specific margin comments
+\newcommand{\trent}[1]{\todo[color=Color2,size=\scriptsize]{\textbf{Trent:} #1}\ }
+\newcommand{\stephen}[1]{\todo[color=Color3,size=\scriptsize]{\textbf{Stephen:} #1}\ }
+\newcommand{\hal}[1]{\todo[color=theGrey,size=\scriptsize]{\textbf{Hal:} #1}\ }
+\newcommand{\paul}[1]{\todo[color=Color1,size=\scriptsize]{\textbf{Paul:} #1}\ }
+
+% Inline comments (for environments)
+\newcommand{\trenti}[1]{\todo[color=Color2,size=\scriptsize,inline]{\textbf{Trent:} #1}}
+\newcommand{\stepheni}[1]{\todo[color=Color3,size=\scriptsize,inline]{\textbf{Stephen:} #1}}
+\newcommand{\hali}[1]{\todo[color=theGrey,size=\scriptsize,inline]{\textbf{Hal:} #1}}
+\newcommand{\pauli}[1]{\todo[color=Color1,size=\scriptsize,inline]{\textbf{Paul:} #1}}
+
