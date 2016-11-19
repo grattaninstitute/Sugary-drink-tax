@@ -66,26 +66,31 @@ Obesity increases a person's risk of developing type 2 diabetes, heart disease a
 
 \section{Obesity prevalence is increasing in Australia }\label{obesity-prevalence-is-increasing-in-australia}
 
+\begin{table}[p]
+\begin{minipage}[\textheight]{\linewidth}
+\caption{Using BMI to categorise obesity}\label{tbl:using-BMI-to-categorise-obesity}
+
+\input tables/BMIClassifications
+
+\source{\textcite{HealthCth2009OverweightObesity}}
+\vspace{0.2\textheight}\null % to fill the column
+\end{minipage}
+\end{table}
+
 The World Health Organisation (WHO) defines overweight and obesity as `abnormal or excessive fat accumulation that may impair health'.%
 \footcite{Organization2016ObesityoverweightFact} Although it has limitations,\footnote{BMI does not distinguish between fat and muscle so is an indirect measure of body fat.
 While there is a correlation between body fat and BMI, it is not linear and differs between men and women, \textcite{Rothman2008BMIrelatederrors}.
 Visceral fat, intra-abdominal fat that surrounds vital organs, is most closely linked to diseases such as type 2 diabetes and cardiovascular disease (\textcites{Mathieu2009Visceralobesitylink}{Despres2012Bodyfatdistribution}{Janiszewski2012WhyBodyMass}).
 While there is a correlation between BMI and visceral fat, people with a relatively low BMI can have high levels of visceral fat, see \textcite{Rankinen1999predictionabdominalvisceral}.} 
 the most common measure of obesity is Body Mass Index (BMI), which is calculated by dividing weight in kilograms by height in metres squared.
-If a person's BMI is above 30 they are classified as obese (Table 1).
+If a person's BMI is above 30 they are classified as obese (\Vref{tbl:using-BMI-to-categorise-obesity}).
 Obesity is considered a disease risk factor in Australia, not a disease.%
 \footnote{\textcite{Australia2014NoTimeWeight} wants obesity to be formally recognised as a disease.
 The WHO and the American Medical Association have formally recognised obesity as a disease (\textcites{Organisation2000Obesitypreventingmanaging}{Stoner2014DidAmericanMedical}{Australia2015NoTimeWeight}).}
 
-\begin{table}
-\caption{Using BMI to categorise obesity}
 
-\input tables/BMIClassifications
 
-\source{\textcite{HealthCth2009OverweightObesity}}
-\end{table}
-
-The prevalence of obesity has increased significantly over the past few decades in Australia (Figure 1.1).
+The prevalence of obesity has increased significantly over the past few decades in Australia (\Vref{fig:more-than-one-in-four-Australian-adults-are-obese}).
 In 2014/15, more than one in four adults were classified as obese and 35 per cent were overweight.%
 \footcite[][Tables 8 and 16]{ABS20154364055001NationalHealth} The rate of childhood obesity has plateaued in the past decade but is significantly higher than the negligible prevalence in the 1980s.
 Childhood obesity increases the likelihood of obesity in later life, especially if a child's parents are obese.%
@@ -101,7 +106,7 @@ Global and national studies have found a strong correlation between obesity and 
 \footcites{Poirier2006Obesitycardiovasculardisease}{Kritchevsky2015Intentionalweightloss}{Rueda-Clausen2015Healthbenefitslong}{Blackburn1995Effectdegreeweight} Reducing obesity will mean better health outcomes.
 
 \begin{figure}
-\caption{More than one in four Australian adults are obese}
+\caption{More than one in four Australian adults are obese}\label{fig:more-than-one-in-four-Australian-adults-are-obese}
 \units{\% obese}
 
 \includegraphics[page=2]{atlas/ObesityCharts}
@@ -636,7 +641,7 @@ Per capita consumption of SSBs is high compared to other countries.
 According to 2014 Euromonitor data, Australia is the 11\textsuperscript{th} largest purchaser of soft drink, with 87 litres purchased per capita each year.%
 \footcites{Silver2015IdBuyEmerging}{Popkin2016Sweeteningglobaldiet}
 
-Sugar-sweetened soft drinks are consumed by more than 80 per cent of the population.\footcite{Levy2014QuenchingAustraliasthirst} Over the past 20 years consumption has declined modestly. Average daily soft drink consumption for those 19 and older declined modestly, from 180 grams in 1995 to 175 grams in 2011-12.\footnote{Includes artificially-sweetened beverage (\textcite{ABS20144364055007AustralianHealth} Table 5.1; \textcite{ABS199948040NationalNutrition} Table 1). Consumption of fruit and vegetable juices, drinks, and cordials also declined modestly, from 124 grams to 120 grams. Increases in under-reporting may account for some of the decrease in consumption of~SSBs~between 1995 and 2011-12. Under-reporting was more pronounced among males aged 9-50 years, see \textcite{ABS20144364055007AustralianHealth}} %
+Sugar-sweetened soft drinks are consumed by more than 80 per cent of the population.\footcite{Levy2014QuenchingAustraliasthirst} Over the past 20 years consumption has declined modestly. Average daily soft drink consumption for those 19 and older declined modestly, from 180 grams in 1995 to 175 grams in 2011-12.\footnote{Includes artificially-sweetened beverage (\textcite{ABS20144364055007AustralianHealth} Table 5.1; \textcite[][Table~1]{ABS199948040NationalNutrition}). Consumption of fruit and vegetable juices, drinks, and cordials also declined modestly, from 124 grams to 120 grams. Increases in under-reporting may account for some of the decrease in consumption of~SSBs~between 1995 and 2011-12. Under-reporting was more pronounced among males aged 9-50 years, see \textcite{ABS20144364055007AustralianHealth}} %
 \CenturyFootnote
 Soft drinks and flavoured mineral water accounted for around half of the energy people get from SSBs (Figure 4.1).
 Across the same period, there was a slight decline in the proportion of adults consuming sugar-sweetened beverages on the day prior to the ABS survey, from 35 per cent to 31 per cent of the population.
@@ -1414,7 +1419,7 @@ Tax revenue from the \$0.20/\$0.40 tiered volumetric SSB tax option was estimate
 For each SSB tax option, total SSB tax revenue was also calculated by summing the tax generated by SSB sub-categories to compare with the aggregate SSB tax estimate.%
 \footnote{The SSB categories used were: soft drinks (cola and non-cola), fruit juice/drinks, energy drinks, cordial, mixers, sports drinks, flavoured mineral waters, iced tea.
 Volumes were estimated using the same approach to gross-up the aggregate sales of SSBs\footcites{IBISWorld2016SoftDrinkManufacturing}{IBISWorld2016FruitJuiceDrink}{Media2015RetailWorldAnnual}.
-The share of sugar-free/diet drinks within each category were obtained from \textcite{Levy2014QuenchingAustraliasthirst}, Table 1.
+The share of sugar-free/diet drinks within each category were obtained from \textcite[][Table~1]{Levy2014QuenchingAustraliasthirst}.
 If no evidence was available, the proportion of sales within a category that contained added sugar was estimate (e.g. that 80 per cent of non-cola soft drinks and fruit juices contain added sugar).
 Cross-category substitution was not considered} Summing the revenue generated within each SSB sub-category yielded very similar results to the aggregate SSB tax calculations for all SSB tax options (within 2-4 per cent of the aggregate estimate).
 
