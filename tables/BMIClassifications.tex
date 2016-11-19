@@ -1,14 +1,15 @@
 \bgroup
 \def\arraystretch{1.2}
-\begin{tabularx}{\columnwidth}{p{7cm}*1{>{\arraybackslash}X}}
+\begin{tabularx}{\columnwidth}{p{7cm}r@{}>{\arraybackslash}X}
 \toprule
-\textbf{Classification} & \textbf{BMI} \\ \cmidrule(lr){1-2}
-Underweight & \textless{}18.50 \\
-Normal range & 18.50--24.99 \\
-Overweight & 25.00--29.99 \\
-Obese class I & 30.00--34.99 \\
-Obese class II & 35.00--39.99 \\
-Obese class III & 40.00 or more \\
+\textbf{Classification} & & \textbf{BMI} \\ 
+\midrule % for a normal line
+Underweight & \textless{}\phantom{.} & 18.50 \\
+Normal range & & 18.50--24.99 \\
+Overweight & & 25.00--29.99 \\
+Obese class I & & 30.00--34.99 \\
+Obese class II & & 35.00--39.99 \\
+Obese class III & & 40.00 or more \\
 \bottomrule
 \end{tabularx}
 \egroup
