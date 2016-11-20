@@ -464,37 +464,37 @@ top=2.70cm, bottom=2.65cm,
 
 % Alternatively, if FrontPage is declared, the file there is used as the frontpage picture
 \DeclareOption{FrontPage}{
-  \IfFileExists{./FrontPage/FrontPage.pdf}{%
-      %\includegraphics[width=\paperwidth,keepaspectratio]{./FrontPage/FrontPage}%
-    }{
-      \ClassError{grattan}{%
-      './FrontPage/FrontPage.pdf' does not exist
-      }{%
-      You have asked for a fullpicture option, but we can't find 
-      a file at './FrontPage/FrontPage.pdf'. Try placing the image
-      there or not using the fullpicture option.
-    }
-    }
-  \renewcommand\BackgroundPic{%
-    \put(0,0){%
-    \parbox[b][\paperheight]{\paperwidth}{%
-    \vfill
-    \centering
-    % Amend
-    \IfFileExists{./FrontPage/FrontPage.pdf}{%
-      \includegraphics[width=\paperwidth,keepaspectratio]{./FrontPage/FrontPage.pdf}%
-    }{
-      \ClassError{grattan}{%
-        './FrontPage/FrontPage' does not exist
-      }{%
-        You have asked for a fullpicture option, but we can't find 
-        a file at './FrontPage/FrontPage'. Try placing the image
-        there or not using the fullpicture option.
-      }
-    }
-  \vfill
-  }}}
-  \renewcommand{\titleTH}{} % FrontPage should be entire.
+	\IfFileExists{./FrontPage/FrontPage.pdf}{%
+	    %\includegraphics[width=\paperwidth,keepaspectratio]{./FrontPage/FrontPage}%
+	  }{
+	    \ClassError{grattan}{%
+			'./FrontPage/FrontPage.pdf' does not exist
+	    }{%
+			You have asked for a fullpicture option, but we can't find 
+			a file at './FrontPage/FrontPage.pdf'. Try placing the image
+			there or not using the fullpicture option.
+		}
+	  }
+	\renewcommand\BackgroundPic{%
+		\put(0,0){%
+		\parbox[b][\paperheight]{\paperwidth}{%
+		\vfill
+		\centering
+		% Amend
+		\IfFileExists{./FrontPage/FrontPage.pdf}{%
+			\includegraphics[width=\paperwidth,keepaspectratio]{./FrontPage/FrontPage.pdf}%
+		}{
+			\ClassError{grattan}{%
+				'./FrontPage/FrontPage' does not exist
+			}{%
+				You have asked for a fullpicture option, but we can't find 
+				a file at './FrontPage/FrontPage'. Try placing the image
+				there or not using the fullpicture option.
+			}
+		}
+	\vfill
+	}}}
+	\renewcommand{\titleTH}{} % FrontPage should be entire.
 
 }
 
@@ -515,7 +515,7 @@ top=2.70cm, bottom=2.65cm,
 ,labelalpha,maxalphanames=1
 ]{biblatex}
 
-%\iffalse
+\@ifpackagelater{biblatex}{2016/09/01}{%
 \DeclareLabelalphaTemplate{\labelelement{\field{labelname}\field{labelyear}}}
 \DeclareSortingScheme{gratt}{\sort{\field{labelalpha}}\sort{\field{labelyear}}}
 \ExecuteBibliographyOptions{sorting=gratt}
@@ -549,7 +549,7 @@ top=2.70cm, bottom=2.65cm,
   \endgroup
   \iftoggle{bbx:dowehavemorenames}{\renewbibmacro*{date+extrayear}{}}{}%
 }
-%\fi
+}
 
 \DeclareLanguageMapping{english}{british-apa}
 \DeclareNameAlias{author}{last-first} % for last name, first name in bibliography
@@ -637,6 +637,7 @@ top=2.70cm, bottom=2.65cm,
 \newcommand{\gcite}[1]{{\citeauthor{#1} (\citedate{#1})}}
 % removes intersentence space after et al.
 \xpatchcmd\citeauthor{\begingroup}{\begingroup\aftergroup\@}{}{}
+\xpatchcmd\textcite{\begingroup}{\begingroup\aftergroup\@}{}{}
 \DefineBibliographyStrings{english}
    {andothers = {et al\adddot}}
 
@@ -702,19 +703,20 @@ top=2.70cm, bottom=2.65cm,
   
 \AtBeginDocument{%
   \pagestyle{empty}
-  \let\mytitle\@title
-  \let\myauthor\@author
-  
-  % TitlePage
-  \onecolumn
-  \AddToShipoutPicture*{\BackgroundPic}
-  \phantom{.}\hfill\titleTH
-  \ClearShipoutPicture
-  \clearpage
-  \twocolumn
+	\let\mytitle\@title
+	\let\myauthor\@author
+  \let\@@acknowledgements\@acknowledgements
+	
+	% TitlePage
+	\onecolumn
+	\AddToShipoutPicture*{\BackgroundPic}
+	\phantom{.}\hfill\titleTH
+	\ClearShipoutPicture
+	\clearpage
+	\twocolumn
   % use microtype
   
-  %
+	%
 % Following page.
 \pagestyle{scrheadings}
 \begin{minipage}[t][0.85\textheight][t]{\columnwidth}
@@ -790,7 +792,7 @@ top=2.70cm, bottom=2.65cm,
   \begin{minipage}[t][0.85\textheight][t]{\columnwidth}
   \setlength{\parskip}{5.5pt plus 2pt}
   \subsection*{Grattan Institute \@Report\ No. \@GrattanReportNumber, \@MONTH\ \@YEAR}
-  \raggedright\@acknowledgements
+  \raggedright\@@acknowledgements
   \end{minipage}
   \twocolumn
 }
