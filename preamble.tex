@@ -4,6 +4,7 @@
 % for tables
 \usepackage{eurosym}
 \usepackage{longtable}
+\AtBeginEnvironment{longtable}{\small}
 \usepackage{ltxtable}
 \usepackage{multirow}
 % Include comments (use option [disable] to turn comments off: i.e. 
@@ -38,3 +39,7 @@
 
 \newcommand*{\ie}{\emph{i.e.}}
 \newcommand*{\eg}{\emph{e.g.}}
+
+\newcolumntype{R}{>{\raggedleft}X}
+
+\usepackage{mathastext} %% temporary
