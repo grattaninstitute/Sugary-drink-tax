@@ -511,7 +511,7 @@ top=2.70cm, bottom=2.65cm,
 % Bibliography
 \RequirePackage[english]{babel}
 \RequirePackage{csquotes}
-\RequirePackage[backend=biber,singletitle,style=authoryear-ibid,ibidtracker=strict, autocite=footnote, maxcitenames=1, maxbibnames=9, uniquelist=false, uniquename=init,sorting=anyt
+\RequirePackage[backend=biber,singletitle,style=authoryear-ibid,ibidtracker=strict, autocite=footnote, maxcitenames=1, maxbibnames=9, uniquelist=false, uniquename=init,sorting=nyt
 ,labelalpha,maxalphanames=1
 ]{biblatex}
 
@@ -859,3 +859,27 @@ top=2.70cm, bottom=2.65cm,
 
 % Placed just before footnote exceeds 100. 
 \newcommand*{\CenturyFootnote}{\deffootnote{2.4em}{1.9em}{\makebox[2.4em][r]{\thefootnotemark.\ \ }}}
+
+% Special box for recommendations
+\DeclareFloatingEnvironment{boxrec}
+
+\newcommand{\@recboxcaption}[1]{%
+\captionsetup{labelfont={bf,Orange},font={bf,Orange},format=plain,justification=raggedright,singlelinecheck=false, skip=0ex, position=above,labelformat=empty}
+\caption{#1}
+\captionsetup{format=plain,font={Large,bf,theGrey},labelfont={small,bf,theGrey}, position=above, skip=0pt}
+}
+
+\newenvironment{bigboxreco}[2]{%
+  \setlength{\currentparskip}{\parskip}
+  \@dblfloat{boxrec}%
+  \begin{mdframed}[style=GrattanFrameBox]
+  \@recboxcaption{#1\label{#2}}%
+  % Reduced column sep 
+  \addtolength{\columnsep}{-23.8pt}%
+  \begin{multicols}{2}
+  \setlength{\parskip}{\currentparskip}% restore the value
+  \RaggedRight
+}{%
+  \end{multicols}\end{mdframed}
+  \end@dblfloat
+}
