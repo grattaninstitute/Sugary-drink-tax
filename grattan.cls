@@ -864,9 +864,8 @@ top=2.70cm, bottom=2.65cm,
 \DeclareFloatingEnvironment{boxrec}
 
 \newcommand{\@recboxcaption}[1]{%
-\captionsetup{labelfont={bf,Orange},font={bf,Orange},format=plain,justification=raggedright,singlelinecheck=false, skip=0ex, position=above,labelformat=empty}
+\captionsetup{labelfont={bf,Orange},font={Large,bf,Orange},format=plain,justification=raggedright,singlelinecheck=false, skip=0ex, position=above,labelformat=empty}
 \caption{#1}
-\captionsetup{format=plain,font={Large,bf,theGrey},labelfont={small,bf,theGrey}, position=above, skip=0pt}
 }
 
 \newenvironment{bigboxreco}[2]{%
