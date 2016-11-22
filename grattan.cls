@@ -32,7 +32,7 @@ numbers=noenddot,
 \RequirePackage{placeins}
 \RequirePackage{afterpage}
 \nonfrenchspacing
-\RequirePackage[activate=true, expansion, final, kerning=true, spacing=true]{microtype}
+\RequirePackage[activate=true, expansion, final, kerning=true, spacing=false]{microtype}
 \microtypecontext{spacing=nonfrench}
 % http://tex.stackexchange.com/questions/303457/setprotrusion-with-helvetica-on-specific-characters
 \SetProtrusion
@@ -511,7 +511,7 @@ top=2.70cm, bottom=2.65cm,
 % Bibliography
 \RequirePackage[english]{babel}
 \RequirePackage{csquotes}
-\RequirePackage[backend=biber,singletitle,style=authoryear-ibid,ibidtracker=strict, autocite=footnote, maxcitenames=1, maxbibnames=9, uniquelist=false, uniquename=init,sorting=nyt
+\RequirePackage[backend=biber,singletitle,style=authoryear-ibid,ibidtracker=strict, autocite=footnote, maxcitenames=1, maxbibnames=9, uniquelist=false, uniquename=init,sorting=anyt
 ,labelalpha,maxalphanames=1
 ]{biblatex}
 
@@ -620,20 +620,30 @@ top=2.70cm, bottom=2.65cm,
 
 % The following lines give the correct footcite Author (Year) but make the ibid erroneous
 % Author (ibid) % use ifciteibid
-\DeclareCiteCommand{\footcite}[\mkbibfootnote]
-  {\boolfalse{cbx:parens}}
-  {\usebibmacro{citeindex}%
-  \ifciteibid{Ibid.}{%  % for ibidem
-   \iffirstcitekey
-     {\setcounter{textcitetotal}{1}}
-     {\stepcounter{textcitetotal}%
-      \textcitedelim}%
-   \usebibmacro{textcite}}%
-   }
-  {\ifbool{cbx:parens}
-     {\bibcloseparen\global\boolfalse{cbx:parens}}
-     {}}
-  {\usebibmacro{textcite:postnote}}
+\DeclareFieldFormat{citehyperref}{%
+  \DeclareFieldAlias{bibhyperref}{noformat}% Avoid nested links
+  \bibhyperref{#1}}
+
+\renewbibmacro*{cite}{\printtext[citehyperref]{%
+  \global\boolfalse{cbx:loccit}%
+  \iffieldundef{shorthand}
+    {\ifthenelse{\ifciteibid\AND\NOT\iffirstonpage}
+       {\usebibmacro{cite:ibid}}
+       {\ifthenelse{\ifnameundef{labelname}\OR\iffieldundef{labelyear}}
+          {\usebibmacro{cite:label}%
+           \setunit{\addspace}}
+          {\printnames{labelname}%
+           \setunit{\nameyeardelim}}%
+        \usebibmacro{cite:paren:labelyear+extrayear}}}
+    {\usebibmacro{cite:shorthand}}}}
+
+\renewbibmacro*{cite:paren:labelyear+extrayear}{%
+  \iffieldundef{labelyear}
+    {}
+    {\printtext[parens]{%
+       \printfield{labelyear}%
+       \printfield{extrayear}}}}
+
 \newcommand{\gcite}[1]{{\citeauthor{#1} (\citedate{#1})}}
 % removes intersentence space after et al.
 \xpatchcmd\citeauthor{\begingroup}{\begingroup\aftergroup\@}{}{}
@@ -834,6 +844,7 @@ top=2.70cm, bottom=2.65cm,
 
 % indent of list of figures
 \renewcommand{\cftfigindent}{0em}
+\renewcommand{\cfttabindent}{0em}
 
 \AtBeginDocument{\renewcommand{\contentsname}{Table of contents}}
 \newcommand{\contentspage}{%
@@ -869,10 +880,11 @@ top=2.70cm, bottom=2.65cm,
 }
 
 \newenvironment{bigboxreco}[2]{%
-  \setlength{\currentparskip}{\parskip}
-  \@dblfloat{boxrec}%
+\setlength{\currentparskip}{\parskip}
+\onecolumn  
+  \addchap{#1\label{#2}}
   \begin{mdframed}[style=GrattanFrameBox]
-  \@recboxcaption{#1\label{#2}}%
+  %\@recboxcaption{#1\label{#2}}%
   % Reduced column sep 
   \addtolength{\columnsep}{-23.8pt}%
   \begin{multicols}{2}
@@ -880,5 +892,5 @@ top=2.70cm, bottom=2.65cm,
   \RaggedRight
 }{%
   \end{multicols}\end{mdframed}
-  \end@dblfloat
+  \twocolumn
 }
