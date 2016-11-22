@@ -844,6 +844,7 @@ top=2.70cm, bottom=2.65cm,
 
 % indent of list of figures
 \renewcommand{\cftfigindent}{0em}
+\renewcommand{\cfttabindent}{0em}
 
 \AtBeginDocument{\renewcommand{\contentsname}{Table of contents}}
 \newcommand{\contentspage}{%
@@ -869,3 +870,28 @@ top=2.70cm, bottom=2.65cm,
 
 % Placed just before footnote exceeds 100. 
 \newcommand*{\CenturyFootnote}{\deffootnote{2.4em}{1.9em}{\makebox[2.4em][r]{\thefootnotemark.\ \ }}}
+
+% Special box for recommendations
+\DeclareFloatingEnvironment{boxrec}
+
+\newcommand{\@recboxcaption}[1]{%
+\captionsetup{labelfont={bf,Orange},font={bf,Orange},format=plain,justification=raggedright,singlelinecheck=false, skip=0ex, position=above,labelformat=empty}
+\caption{#1}
+\captionsetup{format=plain,font={Large,bf,theGrey},labelfont={small,bf,theGrey}, position=above, skip=0pt}
+}
+
+\newenvironment{bigboxreco}[2]{%
+\setlength{\currentparskip}{\parskip}
+\onecolumn  
+  \addchap{#1\label{#2}}
+  \begin{mdframed}[style=GrattanFrameBox]
+  %\@recboxcaption{#1\label{#2}}%
+  % Reduced column sep 
+  \addtolength{\columnsep}{-23.8pt}%
+  \begin{multicols}{2}
+  \setlength{\parskip}{\currentparskip}% restore the value
+  \RaggedRight
+}{%
+  \end{multicols}\end{mdframed}
+  \twocolumn
+}
